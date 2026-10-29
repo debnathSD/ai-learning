@@ -37,6 +37,12 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000/llm-deep-dive/.
 
+## Publishing
+
+GitHub Pages serves the site from the `gh-pages` branch. The
+[Publish site](.github/workflows/publish.yml) workflow mirrors `main` to `gh-pages` on every push, so
+commit to `main` and the live site updates a minute or two later.
+
 ## Structure
 
 ```

@@ -1,0 +1,25 @@
+# GitHub Pages serves this site from the gh-pages branch.
+# This mirrors main to gh-pages on every push, so you only ever commit to main.
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Mirror main to gh-pages
+        run: git push --force origin HEAD:gh-pages
